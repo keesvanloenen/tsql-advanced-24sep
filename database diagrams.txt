@@ -1,0 +1,17 @@
+Als de Database Diagram functionaliteit het niet doet:
+
+Stap 1:
+  Als:
+  login naam = CRONOS\keesl
+  database = adventureworks
+
+  Draai dan de volgende queries:
+  USE adventureworks;
+  ALTER AUTHORIZATION ON DATABASE::[adventureworks] TO [CRONOS\keesl];
+
+----------------------------------------------------------
+
+Stap 2 (als stap 1 het probleem niet oploste):
+
+Rechter muisknop database naam -> properties
+Files -> Voeg 'sa' toe
