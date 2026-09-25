@@ -63,3 +63,27 @@ WHERE NOT EXISTS
 	FROM SalesLT.Product AS p
 	WHERE p.ProductCategoryID = pc.ProductCategoryID
 );
+
+-- GROUPING SETS
+
+SELECT NULL AS color, NULL AS productcategoryid, COUNT(*) AS aantal FROM SalesLT.Product WHERE Color IS NOT NULL
+UNION
+SELECT NULL AS color, productcategoryid, COUNT(*) FROM SalesLT.Product WHERE Color IS NULL GROUP BY ProductCategoryID
+UNION
+SELECT color, productcategoryid, COUNT(*) FROM SalesLT.Product WHERE Color IS NOT NULL GROUP BY Color, productcategoryid 
+
+
+-- COALESCE() retourneert de eerste niet-null waarde uit de argumentenlijst
+
+
+
+SELECT COALESCE(City, StateProvince, CountryRegion, 'n/a') FROM SalesLT.Address
+
+SELECT 
+	OrderDate 
+	, CAST(OrderDate AS date)
+FROM SalesLT.SalesOrderHeader
+
+SELECT CAST('19830230 04:50' AS date)
+
+SELECT COALESCE(TRY_CAST('19830205 04:50' AS date), SYSDATETIME())
